@@ -1,19 +1,24 @@
 import { useEffect, useState } from "react";
 
 export function UserInput(props: any) {
-    const { setGuessedLetters, setIncorrectGuesses, word } = props;
+    const { guessedLetters, setGuessedLetters, setIncorrectGuesses, word } = props;
     const [currentLetter, setCurrentLetter] = useState("");
-    const [validLetter, setValidLetter] = useState(true);
+    const [errorMessage, setErrorMessage] = useState("Please enter a letter");
 
     useEffect(() => {
         function keydown(e: KeyboardEvent) {
             if (e.key.length === 1 && e.key.match(/[a-z]/i)) {
                 setCurrentLetter(e.key.toLowerCase());
-                setValidLetter(true);
             } 
             else if (e.key === "Enter") {
                 if (currentLetter === "") {
-                    setValidLetter(false);
+                    setErrorMessage("Please enter a letter");
+                    return;
+                }
+
+                if (guessedLetters.has(currentLetter)) {
+                    setCurrentLetter("");
+                    setErrorMessage("Already Guessed!");
                     return;
                 }
 
@@ -28,11 +33,14 @@ export function UserInput(props: any) {
                 }
 
                 setCurrentLetter("");
-                setValidLetter(true);
             }
-            else {
+            else if (e.key === "Backspace") {
                 setCurrentLetter("");
-                setValidLetter(false);
+                setErrorMessage("Please enter a letter");
+            }
+            else if (currentLetter === "") {
+                setCurrentLetter("");
+                setErrorMessage("Please enter a letter");
             }
         }
 
@@ -41,11 +49,11 @@ export function UserInput(props: any) {
         return () => {
             window.removeEventListener("keydown", keydown);
         };
-    });
+    }, [currentLetter]);
 
     return (
         <div className="user-input">
-            {validLetter ? <div className="current-letter">{currentLetter || "\u00A0"}</div> : <div className="error">Please enter a letter</div>}
+            {currentLetter ? <div className="current-letter">{currentLetter || "\u00A0"}</div> : <div className="error">{errorMessage}</div>}
             <div className="instructions">Press Enter to Submit Guess</div>
         </div>
     )

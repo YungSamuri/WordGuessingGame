@@ -1,34 +1,85 @@
 :root {
-  font-family: Inter,system-ui,Avenir,Helvetica,Arial,sans-serif;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-  box-sizing: border-box
+	font-family: Inter,system-ui,Avenir,Helvetica,Arial,sans-serif;
+	color: rgba(255, 255, 255, 0.87);
+	background-color: #242424;
+	box-sizing: border-box;
+	font-weight: 700;
+}
+
+.game {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 5%;
+	gap: 3rem;
 }
 
 .word {
-  padding: 16px;
-  font-family: monospace;
-  font-weight: 700;
-  font-size: 5em;
-  text-align: center;
-  color: #4f7cd480;
-  display: flex;
-  flex-direction: row;
-  gap: 5px;
-  justify-content: center;
-  align-items: center;
+	padding: 16px;
+	font-family: monospace;
+	font-weight: 700;
+	font-size: 5em;
+	color: #21adffa6;
+	display: flex;
+	flex-direction: row;
+	gap: 5px;
+	justify-content: center;
+	align-items: center;
+	text-decoration: underline;
+	text-decoration-color: rgba(255, 255, 255, 0.87);
 }
 
 .guessed {
-  text-decoration: none;
+	text-decoration: none;
 }
 
-.unguessed {
-  text-decoration: underline;
-  color: #242424;
-  text-decoration-color: rgba(255, 255, 255, 0.87);
+.user-input {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 3rem;
 }
 
-.letter {
-  width: 5px;
+.current-letter {
+	font-size: 3rem;
+	color: rgba(255, 255, 255, 0.87);;
+}
+
+.error {
+	color: #ff2121a6;
+	font-size: 2rem;
+}
+
+.instructions {
+	font-size: 1.5em;
+	text-align: center;
+}
+
+.incorrect-guesses {
+	border: 1px solid rgba(255, 255, 255, 0.87);;
+	min-height: 10rem;
+	padding: 16px;
+	margin-top: 5rem;
+	width: 20rem;
+}
+
+.header {
+	text-decoration: underline;
+}
+
+.guess-container {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.guess {
+	color: #ff2121a6;
+	font-size: 2em;
+	padding: 8px;
+	font-weight: 700;
+
 }
