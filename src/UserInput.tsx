@@ -45,7 +45,7 @@ export function UserInput(props: any) {
 
     return (
         <div className="user-input">
-            {validLetter ? <div className="current-letter">{currentLetter}</div> : <div className="error">Please enter a letter</div>}
+            {validLetter ? <div className="current-letter">{currentLetter || "\u00A0"}</div> : <div className="error">Please enter a letter</div>}
             <div className="instructions">Press Enter to Submit Guess</div>
         </div>
     )
