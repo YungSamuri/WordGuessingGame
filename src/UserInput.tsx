@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 export function UserInput(props: any) {
-    const { guessedLetters, setGuessedLetters, setIncorrectGuesses, word } = props;
+    const { guessedLetters, setGuessedLetters, setIncorrectGuesses: setGuessesLeft, word } = props;
     const [currentLetter, setCurrentLetter] = useState("");
     const [errorMessage, setErrorMessage] = useState("Please enter a letter");
 
@@ -29,7 +29,7 @@ export function UserInput(props: any) {
                 });
 
                 if (!word.includes(currentLetter)) {
-                    setIncorrectGuesses((prev: number) => prev + 1);
+                    setGuessesLeft((prev: number) => prev - 1);
                 }
 
                 setCurrentLetter("");

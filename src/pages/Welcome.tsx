@@ -1,8 +1,12 @@
+import { useNavigate } from "react-router-dom";
+
 export function Welcome() {
+    const navigate = useNavigate();
+
     return (
-        <div className="welcome">
-            Welcome to Word Guesser!
-            <button className="start-button">Start Game</button>
+        <div className="content">
+            <span className="title">Welcome to Word Guesser!</span>
+            <button className="button" onClick={() => navigate("/game")}>Start Game</button>
         </div>
     )
 }

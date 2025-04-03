@@ -6,13 +6,38 @@
 	font-weight: 700;
 }
 
-.game {
+.content {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	padding: 5%;
+	height: 100vh;
 	gap: 3rem;
+}
+
+.title {
+	font-size: 5em;
+	color: rgba(255, 255, 255, 0.87);
+}
+
+.button {
+	background-color: #21adffa6;
+	color: rgba(255, 255, 255, 0.87);
+	border: none;
+	padding: 16px;
+	font-size: 2em;
+	font-weight: 700;
+	border-radius: 8px;
+	cursor: pointer;
+	transition: background-color 0.3s ease-in-out;
+}
+
+.start-button:hover {
+	background-color: #21adff;
+}
+
+.start-button:active {
+	background-color: #0f6a9ea6;;
 }
 
 .word {
