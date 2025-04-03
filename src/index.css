@@ -16,8 +16,14 @@
 }
 
 .title {
-	font-size: 5em;
-	color: rgba(255, 255, 255, 0.87);
+	font-size: 5rem;
+	text-align: center;
+}
+
+.description {
+	font-size: 1.5rem;
+	text-align: center;
+	width: 50%;
 }
 
 .button {

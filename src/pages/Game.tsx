@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { WordDisplay } from "../WordDisplay";
 import { UserInput } from "../UserInput";
 import { Guesses } from "../Guesses";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { getWord } from "../ApiQuery";
 
 
@@ -13,10 +13,12 @@ export function Game()
     const [word, setWord] = useState<string[]>(new Array());
 
     const navigate = useNavigate();
+    const location = useLocation();
+    const difficultyOffset = location.state as number;
 
     useEffect(() => {
         async function fetchWord() {
-            setWord(await getWord());
+            setWord(await getWord(difficultyOffset));
         }
 
         fetchWord();
@@ -24,13 +26,13 @@ export function Game()
 
     useEffect(() => {
         if (guessesLeft <= 0) {
-            navigate("/gameover", {state: guessesLeft});
+            navigate("/gameover", {state: {guessesLeft, word}});
         }
     }, [guessesLeft]);
 
     useEffect(() => {
         if (word.length > 1 && word.every((letter: string) => guessedLetters.has(letter))) {
-            navigate("/gameover", {state: guessesLeft});
+            navigate("/gameover", {state: {guessesLeft, word}});
         }
     }, [guessedLetters]);
 
