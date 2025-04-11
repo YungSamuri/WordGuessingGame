@@ -33,6 +33,7 @@ export function UserInput(props: any) {
                 }
 
                 setCurrentLetter("");
+                setErrorMessage("Please enter a letter");
             }
             else if (e.key === "Backspace") {
                 setCurrentLetter("");
